@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Job Hunt System</title>
+<!-- Home page — connects the three tools. This whole system is a template:
+     open this folder in Claude Code and say "set up my job hunt system" (see README / CLAUDE.md). -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --forest:#1B3A2D; --card:#1F4233; --lime:#A8E86C; --w10:rgba(255,255,255,0.1); --w06:rgba(255,255,255,0.06); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'DM Sans',sans-serif; background:var(--forest); color:#fff; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; padding:64px 20px; }
+  .eyebrow { font-family:'Fraunces',serif; font-size:13px; font-weight:700; color:var(--lime);
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px; }
+  h1 { font-family:'Fraunces',serif; font-size:38px; font-weight:700; text-align:center; line-height:1.1; }
+  .sub { font-size:15px; color:rgba(255,255,255,0.7); text-align:center; max-width:560px; margin:14px 0 40px; line-height:1.6; }
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; width:100%; max-width:860px; }
+  @media (max-width:720px){ .cards{ grid-template-columns:1fr; } h1{ font-size:30px; } }
+  .card { background:var(--card); border:1px solid var(--w10); border-radius:16px; padding:24px 22px;
+    text-decoration:none; color:#fff; display:flex; flex-direction:column; gap:8px; transition:all 0.2s ease; }
+  .card:hover { border-color:rgba(168,232,108,0.5); transform:translateY(-3px); }
+  .card .ic { font-size:26px; }
+  .card .t { font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--lime); }
+  .card .d { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.55; }
+  .footer { margin-top:44px; max-width:600px; text-align:center; font-size:13px; color:rgba(255,255,255,0.55); line-height:1.7; }
+  .footer code { background:var(--w06); border:1px solid var(--w10); border-radius:6px; padding:2px 7px; color:var(--lime); font-size:12px; }
+</style>
+</head>
+<body>
+  <div class="eyebrow">A Claude Code template</div>
+  <h1>The Job Hunt System</h1>
+  <div class="sub">A small operating system for a focused job search: see where you're headed, score the roles worth your time, and win the day — every day. Built to be customized in minutes.</div>
+
+  <div class="cards">
+    <a class="card" href="scoreboard.html">
+      <div class="ic">📋</div>
+      <div class="t">Daily Scoreboard</div>
+      <div class="d">Your daily task tracker. Check off the work that moves your two big goals, keep a streak, never miss twice.</div>
+    </a>
+    <a class="card" href="aligned-roles.html">
+      <div class="ic">🎯</div>
+      <div class="t">Aligned Roles</div>
+      <div class="d">A job board scored against <em>your</em> criteria — not a generic feed. Star, apply, dismiss.</div>
+    </a>
+    <a class="card" href="the-map.html">
+      <div class="ic">🗺️</div>
+      <div class="t">The Map</div>
+      <div class="d">Your vision on one page: from the ultimate outcome at the top down to the one talent it grows from.</div>
+    </a>
+  </div>
+
+  <div class="footer">
+    New here? Open this folder in <b>Claude Code</b> and say <code>set up my job hunt system</code> — it'll interview you and fill in all three pages. Prefer to do it by hand? See <b>README.md</b>. Your progress saves in your browser (each page has ⬇ backup / ⬆ restore).
+  </div>
+</body>
+</html>

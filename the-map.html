@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>the map from vision to today</title>
+<!--
+  ┌──────────────────────────────────────────────────────────────────┐
+  │  VISION MAP — a template.                                          │
+  │  Read top-to-bottom: your ultimate outcome at the top, your core   │
+  │  talent (the root) at the bottom, and the path between them.       │
+  │                                                                    │
+  │  TO CUSTOMIZE: replace the text inside each box with your own.      │
+  │  Or just open this folder in Claude Code and say "fill in my        │
+  │  vision map" — CLAUDE.md tells it how to interview you and edit     │
+  │  these boxes for you. The boxes are plain <text> tags below.        │
+  └──────────────────────────────────────────────────────────────────┘
+-->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1B3A2D;
+    --card: #1F4233;
+    --lime: #A8E86C;
+    --lime-dim: #7BBF4A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--forest);
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 32px 16px 48px;
+    color: #fff;
+  }
+  .eyebrow {
+    font-family: 'Fraunces', serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--lime);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 4px; text-align: center;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; font-weight: 700;
+    text-align: center; margin-bottom: 4px;
+  }
+  .sub { font-size: 13px; color: rgba(255,255,255,0.6); text-align: center; margin-bottom: 20px; max-width: 560px; }
+  svg { width: 100%; max-width: 860px; height: auto; display: block; }
+
+  .box-lime { fill: rgba(168,232,108,0.10); stroke: var(--lime); stroke-width: 1; }
+  .box-solid { fill: var(--lime); stroke: var(--lime); stroke-width: 1; }
+  .th-forest { font: 600 14px 'DM Sans', sans-serif; fill: var(--forest); }
+  .ts-forest { font: 400 12px 'DM Sans', sans-serif; fill: rgba(27,58,45,0.75); }
+  .box-live { fill: var(--card); stroke: rgba(168,232,108,0.30); stroke-width: 1; }
+  .box-dim  { fill: rgba(255,255,255,0.05); stroke: rgba(255,255,255,0.15); stroke-width: 1; }
+  .th { font: 600 14px 'DM Sans', sans-serif; fill: #fff; }
+  .th-lime { font: 600 14px 'DM Sans', sans-serif; fill: var(--lime); }
+  .ts { font: 400 12px 'DM Sans', sans-serif; fill: rgba(255,255,255,0.6); }
+  .ts-dim { font: 400 12px 'DM Sans', sans-serif; fill: rgba(255,255,255,0.4); }
+  .arr { stroke: rgba(255,255,255,0.45); stroke-width: 1.2; fill: none; }
+  .ground { stroke: rgba(255,255,255,0.2); stroke-width: 1; stroke-dasharray: 4 4; }
+  .root { stroke: var(--lime-dim); stroke-width: 1.2; fill: none; opacity: 0.45; }
+
+  .wigs {
+    width: 100%; max-width: 860px;
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .wig {
+    flex: 1; min-width: 260px;
+    background: var(--lime);
+    border: 1px solid var(--lime);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .wig-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--forest); opacity: 0.75;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .wig-text { font-size: 13px; color: var(--forest); font-weight: 600; line-height: 1.5; }
+  .footer { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 20px; text-align: center; }
+  .nav {
+    position: fixed; top: 16px; right: 16px; display: flex; gap: 8px;
+  }
+  .nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600; color: var(--lime);
+    text-decoration: none; letter-spacing: 0.04em;
+    border: 1px solid rgba(168,232,108,0.4); border-radius: 999px;
+    padding: 6px 14px; background: rgba(168,232,108,0.06);
+    transition: all 0.2s ease;
+  }
+  .nav a:hover { background: rgba(168,232,108,0.16); }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html">🏠 home</a>
+    <a href="scoreboard.html">📋 scoreboard</a>
+    <a href="aligned-roles.html">🎯 aligned roles</a>
+  </div>
+  <div class="eyebrow">Vision → Today</div>
+  <h1>the map from vision to today</h1>
+  <div class="sub">Where you're headed (top) all the way down to the one talent it grows from (the root). Replace each box with yours — or ask Claude to fill it in for you.</div>
+
+  <svg viewBox="0 0 680 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alignment tree from gift to treasure">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <rect class="box-solid" x="190" y="40" width="300" height="74" rx="12"/>
+    <text class="th-forest" x="340" y="58" text-anchor="middle" dominant-baseline="central">The treasure</text>
+    <text class="ts-forest" x="340" y="78" text-anchor="middle" dominant-baseline="central">your ultimate outcome</text>
+    <text class="ts-forest" x="340" y="96" text-anchor="middle" dominant-baseline="central">e.g. financial freedom by 40</text>
+
+    <line class="arr" x1="340" y1="150" x2="340" y2="120" marker-end="url(#arrow)"/>
+
+    <rect class="box-lime" x="215" y="150" width="250" height="56" rx="8"/>
+    <text class="th-lime" x="340" y="168" text-anchor="middle" dominant-baseline="central">Your long-game vehicle</text>
+    <text class="ts" x="340" y="188" text-anchor="middle" dominant-baseline="central">the thing that compounds · [year]</text>
+
+    <path class="arr" d="M140 266 V236 H270 V212" marker-end="url(#arrow)"/>
+    <path class="arr" d="M340 266 V212" marker-end="url(#arrow)"/>
+    <path class="arr" d="M540 266 V236 H410 V212" marker-end="url(#arrow)"/>
+
+    <rect class="box-live" x="50" y="266" width="180" height="56" rx="8"/>
+    <text class="th" x="140" y="284" text-anchor="middle" dominant-baseline="central">Your day-one move</text>
+    <text class="ts" x="140" y="304" text-anchor="middle" dominant-baseline="central">the role / steady cash flow</text>
+
+    <rect class="box-live" x="250" y="266" width="180" height="56" rx="8"/>
+    <text class="th" x="340" y="284" text-anchor="middle" dominant-baseline="central">Your audience play</text>
+    <text class="ts" x="340" y="304" text-anchor="middle" dominant-baseline="central">media / leverage</text>
+
+    <rect class="box-live" x="450" y="266" width="180" height="56" rx="8"/>
+    <text class="th" x="540" y="284" text-anchor="middle" dominant-baseline="central">Your bonus bets</text>
+    <text class="ts" x="540" y="304" text-anchor="middle" dominant-baseline="central">upside, not the plan</text>
+
+    <path class="arr" d="M340 376 V346 H140 V328" marker-end="url(#arrow)"/>
+    <path class="arr" d="M340 376 V328" marker-end="url(#arrow)"/>
+    <path class="arr" d="M340 376 V346 H540 V328" marker-end="url(#arrow)"/>
+
+    <rect class="box-live" x="240" y="376" width="200" height="56" rx="8"/>
+    <text class="th" x="340" y="394" text-anchor="middle" dominant-baseline="central">The identity</text>
+    <text class="ts" x="340" y="414" text-anchor="middle" dominant-baseline="central">who you're becoming</text>
+
+    <line class="ground" x1="60" y1="465" x2="620" y2="465"/>
+
+    <line class="arr" x1="340" y1="495" x2="340" y2="438" marker-end="url(#arrow)"/>
+
+    <rect class="box-live" x="215" y="495" width="250" height="56" rx="8"/>
+    <text class="th-lime" x="340" y="513" text-anchor="middle" dominant-baseline="central">The gift</text>
+    <text class="ts" x="340" y="533" text-anchor="middle" dominant-baseline="central">your core talent</text>
+
+    <path class="root" d="M260 551 C245 560, 215 566, 190 571"/>
+    <path class="root" d="M320 551 C316 560, 305 568, 297 573"/>
+    <path class="root" d="M380 551 C388 560, 400 568, 410 572"/>
+    <path class="root" d="M430 551 C450 560, 478 565, 500 570"/>
+
+    <rect class="box-dim" x="37" y="580" width="158" height="44" rx="6"/>
+    <text class="ts-dim" x="116" y="596" text-anchor="middle" dominant-baseline="central">An old path</text>
+    <text class="ts-dim" x="116" y="612" text-anchor="middle" dominant-baseline="central">pruned</text>
+
+    <rect class="box-dim" x="480" y="580" width="158" height="44" rx="6"/>
+    <text class="ts-dim" x="559" y="596" text-anchor="middle" dominant-baseline="central">A side project</text>
+    <text class="ts-dim" x="559" y="612" text-anchor="middle" dominant-baseline="central">parked, not abandoned</text>
+  </svg>
+
+  <div class="wigs">
+    <div class="wig">
+      <div class="wig-label">Wildly Important Goal 1</div>
+      <div class="wig-text">e.g. From $0 → signed offer ≥ your target, by [date]. One sentence, from-X-to-Y, with a deadline.</div>
+    </div>
+    <div class="wig">
+      <div class="wig-label">Wildly Important Goal 2</div>
+      <div class="wig-text">e.g. From 0 → 36 things shipped, by [date]. Pick the two goals that matter most this season — no more than two.</div>
+    </div>
+  </div>
+
+  <div class="footer">Template · open in Claude Code and ask it to fill this in for you (see CLAUDE.md)</div>
+
+</body>
+</html>

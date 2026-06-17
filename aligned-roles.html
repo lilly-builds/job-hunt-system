@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aligned Roles</title>
+<!--
+  CUSTOMIZABLE TEMPLATE — this is a starter "aligned roles" job board.
+  Open this folder in Claude Code and ask it to find + score real roles for you,
+  or replace the two EXAMPLE CARDs below by hand. See CLAUDE.md for how it works.
+-->
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1B3A2D;
+    --card: #1F4233;
+    --lime: #A8E86C;
+    --bleed: #E0707A;
+    --foll:  #7CC58A;
+    --ovu:   #B48BD8;
+    --lut:   #E0975C;
+    --w10: rgba(255,255,255,0.1);
+    --w06: rgba(255,255,255,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+    background: var(--forest);
+    min-height: 100vh;
+    padding: 26px 22px 76px;
+    color: #fff;
+  }
+  a { color: inherit; }
+  #roles-wrap { max-width: 760px; margin: 0 auto; }
+  .nav-links { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px; }
+  .pill {
+    font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: 0.03em;
+    border: 1px solid var(--w10); border-radius: 999px; padding: 6px 14px; transition: all 0.2s ease; white-space: nowrap;
+  }
+  .pill:hover { color: var(--lime); border-color: rgba(168,232,108,0.4); }
+  .criteria-box { background: var(--w06); border: 1px solid var(--w10); border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; }
+  .criteria-box h3 { font-size: 12px; font-weight: 700; color: var(--lime); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
+  .criteria-box ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; }
+  .criteria-box li { font-size: 12.5px; line-height: 1.5; color: #fff; opacity: 0.84; padding-left: 16px; position: relative; }
+  .criteria-box li::before { content: "•"; position: absolute; left: 2px; color: var(--lime); opacity: 0.7; }
+  .criteria-box .cb-note { font-size: 11.5px; opacity: 0.6; margin-top: 10px; line-height: 1.5; }
+  .roles-head { text-align: center; margin: 6px 0 22px; }
+  .roles-head h2 { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; text-transform: lowercase; }
+  .roles-head .rh-sub { font-size: 13px; color: #fff; opacity: 0.65; margin-top: 7px; line-height: 1.5; }
+  .freshness { font-size: 11.5px; opacity: 0.65; margin: 0 2px 18px; line-height: 1.5; text-align:center; }
+  .jobs-grid { display: flex; flex-direction: column; gap: 12px; }
+  .jobs-section-head { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 800; color: var(--lime); text-transform: lowercase; letter-spacing: 0.01em; margin: 22px 0 4px; display: flex; align-items: center; gap: 10px; }
+  .jobs-section-head::after { content: ""; flex: 1; height: 1px; background: rgba(168,232,108,0.3); }
+  .jobs-section-sub { font-size: 12px; color: #fff; opacity: 0.62; margin-bottom: 14px; line-height: 1.5; }
+  .chip.nyc { color: var(--ovu); border-color: rgba(180,139,216,0.45); }
+  .chip.pick { color: var(--lime); border-color: rgba(168,232,108,0.4); }
+  .job-card { background: var(--card); border: 1px solid var(--w10); border-radius: 12px; padding: 16px 17px; display: flex; flex-direction: column; gap: 11px; transition: all 0.2s ease; }
+  .job-card:hover { border-color: rgba(168,232,108,0.4); transform: translateY(-2px); }
+  .job-rank { font-size: 11px; font-weight: 700; color: var(--lime); opacity: 0.7; letter-spacing: 0.05em; }
+  .job-title { font-size: 16px; font-weight: 700; line-height: 1.35; }
+  .job-title .at, .si-title .at { color: var(--lime); font-weight: 700; }
+  .job-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--w06); border: 1px solid var(--w10); white-space: nowrap; }
+  .chip.comp { color: var(--lime); border-color: rgba(168,232,108,0.4); }
+  .chip.urgent { color: #fff; background: rgba(224,112,122,0.18); border-color: rgba(224,112,122,0.5); }
+  .chip.fresh { color: var(--foll); border-color: rgba(124,197,138,0.5); }
+  .chip.verify { color: var(--lut); border-color: rgba(224,151,92,0.45); }
+  .job-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+  .job-bullets li { font-size: 12.5px; line-height: 1.5; color: #fff; opacity: 0.84; padding-left: 14px; position: relative; }
+  .job-bullets li::before { content: "–"; position: absolute; left: 0; opacity: 0.5; }
+  .fit { font-size: 12.5px; line-height: 1.5; background: rgba(168,232,108,0.08); border: 1px solid rgba(168,232,108,0.2); border-radius: 8px; padding: 9px 11px; }
+  .fit b { color: var(--lime); }
+  .job-note { font-size: 11.5px; line-height: 1.5; color: var(--lut); opacity: 0.95; }
+  .job-apply { margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--lime); color: var(--forest); font-weight: 700; font-size: 13px; text-decoration: none; border-radius: 8px; padding: 10px 14px; transition: all 0.2s ease; }
+  .job-apply:hover { filter: brightness(1.08); }
+  .stretch { margin: 26px 0 8px; }
+  .stretch h3 { font-size: 12px; font-weight: 700; color: #fff; opacity: 0.55; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+  .stretch-item { background: var(--w06); border: 1px solid var(--w10); border-radius: 10px; padding: 12px 14px; margin-bottom: 9px; }
+  .stretch-item .si-title { font-size: 13.5px; font-weight: 700; }
+  .stretch-item .si-title a { color: inherit; text-decoration: none; }
+  .stretch-item .si-title a:hover { color: var(--lime); }
+  .stretch-item .si-note { font-size: 12px; opacity: 0.72; margin-top: 4px; line-height: 1.5; }
+  @media print {
+    body { background: #fff; color: #111; padding: 0; }
+    #roles-wrap { max-width: none; }
+    .job-card, .stretch-item { break-inside: avoid; background: #fff; color: #111; border-color: #ddd; }
+    .fit { background: #f5f8f0; }
+    .job-apply { border: 1px solid #ddd; background: #f5f5f5; color: #111; }
+    .roles-head .rh-sub, .jobs-section-sub, .job-bullets li, .stretch-item .si-note { color: #111; opacity: .85; }
+  }
+</style>
+</head>
+<body>
+<div id="roles-wrap">
+  <div class="nav-links">
+    <a class="pill" href="index.html">🏠 home</a>
+    <a class="pill" href="scoreboard.html">📋 scoreboard</a>
+    <a class="pill" href="the-map.html">🗺 the map</a>
+  </div>
+
+  <div class="roles-head">
+    <h2>aligned roles</h2>
+    <div class="rh-sub">Roles scored against your own criteria. Replace these examples with your real leads — or open this folder in Claude Code and ask it to find + score roles for you (see CLAUDE.md).</div>
+  </div>
+
+  <div class="freshness">Last updated: —</div>
+
+  <div class="criteria-box">
+    <h3>your criteria</h3>
+    <ul>
+      <li>Placeholder criterion 1 — e.g. role shape or title you're targeting.</li>
+      <li>Placeholder criterion 2 — e.g. compensation floor or location preference.</li>
+      <li>Placeholder criterion 3 — e.g. a non-negotiable (mission, remote, team size).</li>
+    </ul>
+    <div class="cb-note">Define your real criteria in your-scorecard.md.</div>
+  </div>
+
+  <div class="jobs-section-head">★ example roles</div>
+  <div class="jobs-section-sub">These two cards show the format. Replace them with your real leads, or let Claude fill them in.</div>
+
+  <div class="jobs-grid">
+
+    <!-- EXAMPLE CARD — replace with a real role, or let Claude fill these in (see CLAUDE.md) -->
+    <div class="job-card">
+      <div class="job-rank">★ RATING · 7–10</div>
+      <div class="job-title">AI Enablement Lead <span class="at">@ Example Co</span></div>
+      <div class="job-meta"><span class="chip">Remote (US)</span><span class="chip comp">$XXX–XXXK</span><span class="chip fresh">✓ verified live</span></div>
+      <ul class="job-bullets">
+        <li>Leads company-wide AI adoption — training, workshops, and a champions network across teams.</li>
+        <li>Partners with leaders to find high-value use cases and drive them from idea to adoption.</li>
+        <li>Established, lower-AI-maturity company with real operational scale.</li>
+      </ul>
+      <div class="fit"><b>Why you:</b> a clear match for your target role shape — train teams, drive adoption, and influence decision-makers at a credible company.</div>
+      <a class="job-apply" href="#" target="_blank" rel="noopener">Learn more &amp; apply →</a>
+    </div>
+
+    <!-- EXAMPLE CARD — replace with a real role, or let Claude fill these in (see CLAUDE.md) -->
+    <div class="job-card">
+      <div class="job-rank">RATING · 5–7</div>
+      <div class="job-title">Director, AI Transformation <span class="at">@ Sample Inc</span></div>
+      <div class="job-meta"><span class="chip">Hybrid</span><span class="chip comp">$XXX–XXXK</span><span class="chip verify">verify open</span></div>
+      <ul class="job-bullets">
+        <li>Owns the AI transformation roadmap and stands up a Center of Excellence.</li>
+        <li>Runs change management and ROI measurement across business units.</li>
+      </ul>
+      <div class="fit"><b>Why you:</b> a builder-turned-leader seat where persuasion and adoption are the core of the job — squarely in your lane.</div>
+      <a class="job-apply" href="#" target="_blank" rel="noopener">Learn more &amp; apply →</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

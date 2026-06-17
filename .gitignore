@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Keep your personal copies out of the public repo.
+# Anything matching these stays on your machine and is never committed:
+*-private.*
+*.private.*
+/private/
+
+# Add specific personal files here if you fork this for your own real use, e.g.:
+# my-scorecard.md
+# my-roles.html
