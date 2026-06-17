@@ -2,6 +2,8 @@
 
 > A simple dashboard for a focused job search — see where you're headed, score the roles worth your time, and win the day. **No account, no install, runs in your browser.**
 
+**🔗 [Try the live demo →](https://wombwise.github.io/job-hunt-system/)**
+
 <!-- SCREENSHOT GOES HERE — a picture of index.html (the home page) is the single biggest thing
      for helping a stranger "get it" in 5 seconds. Add: ![The Job Hunt System](docs/home.png) -->
 
